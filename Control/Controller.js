@@ -1,15 +1,14 @@
-import ElemView from "../View/ElemView.js"; 
+import jatekView from "../View/JatekView.js";
 import Model from "../Model/Model.js"; 
 class Controller{
     constructor(){
         const ELEM = $(".elem");
         const SZULO = $(".jatekter");
-        const ELEMVIEW =new ElemView(SZULO);
+        const ELEMVIEW =new jatekView(SZULO);
         const MODEL = new Model();
-        ELEMVIEW.setErtek(MODEL.getErtek());
-        $(window).on("kivalaszt",()=>{
+        $(window).on("kivalaszt",(event)=>{
             MODEL.setAllapot();
-            ELEMVIEW.setErtek(MODEL.getErtek());
+            event.detail.setErtek(MODEL.getErtek());
         })
     }
 

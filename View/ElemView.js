@@ -1,8 +1,10 @@
+
 class ElemView {
     #Szuloelem;
 
-  constructor(Szuloelem) {
+  constructor(Szuloelem,index) {
     this.#Szuloelem = Szuloelem;
+    this.index = index;
     this.#divek();
     this.elem =$(".elem:last-child");
     this.peElem = this.elem.children("p");
@@ -17,14 +19,14 @@ class ElemView {
         txt += `<p></p>`;
         txt+=`</div">`;
     
-    this.#Szuloelem.html(txt);
+    this.#Szuloelem.append(txt);
 }
 setErtek(ertek){
   this.peElem.html(ertek)
 }
 
 #esemenyTrigger(esemenynev){
-  const esemenyem = new CustomEvent(esemenynev);
+  const esemenyem = new CustomEvent(esemenynev, {detail: this});
   window.dispatchEvent(esemenyem);
 }
 }
