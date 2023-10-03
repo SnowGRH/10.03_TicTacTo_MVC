@@ -1,15 +1,22 @@
 
 class ElemView {
     #Szuloelem;
-
+    #index;
+    #allapot
   constructor(Szuloelem,index) {
     this.#Szuloelem = Szuloelem;
-    this.index = index;
+    this.#index = index;
+    this.#allapot = true;
     this.#divek();
     this.elem =$(".elem:last-child");
     this.peElem = this.elem.children("p");
     this.elem.on("click",()=>{
-      this.#esemenyTrigger("kivalaszt")
+      if (this.#allapot) {
+        this.#esemenyTrigger("kivalaszt")
+        this.#allapot = false;
+      }
+      
+
     })
 
   }
@@ -20,6 +27,9 @@ class ElemView {
         txt+=`</div">`;
     
     this.#Szuloelem.append(txt);
+}
+getIndex(){
+  return this.#index;
 }
 setErtek(ertek){
   this.peElem.html(ertek)

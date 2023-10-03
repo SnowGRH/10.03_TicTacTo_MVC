@@ -7,8 +7,10 @@ class Controller{
         const ELEMVIEW =new jatekView(SZULO);
         const MODEL = new Model();
         $(window).on("kivalaszt",(event)=>{
-            MODEL.setAllapot();
+            
+            MODEL.setAllapot(event.detail.getIndex());
             event.detail.setErtek(MODEL.getErtek());
+            console.log(MODEL.vegeVanE());
         })
     }
 

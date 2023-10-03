@@ -6,5 +6,6 @@ class jatekView{
             
         }
     }
+    
 }
 export default jatekView;
