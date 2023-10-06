@@ -1,49 +1,70 @@
-class Model{
-    #allapot;
-    #lista=[];
-    #lepes ;
-    constructor(){
-        this.#allapot="X";
-        this.#lista = [" "," "," "," "," "," "," "," "," "]
-        this.#lepes = 0;
+class Model {
+  #allapot;
+  lista = [];
+  #lepes;
+
+
+  constructor() {
+    this.#allapot = " ";
+    this.lista = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+    this.#lepes = 0;
+
+  }
+
+  setAllapot(index) {
+    this.#lepes++;
+    if (this.#allapot === "X") {
+      this.#allapot = "O";
+    } else {
+      this.#allapot = "X";
     }
-    setAllapot(index){
-        this.#lepes++;
-        if (this.#allapot === "X") {
-            this.#allapot = "O";
-        } else {
-            this.#allapot = "X"
-        }
-        this.#lista[index] = this.#allapot;
-        console.log(this.#lista);
+    this.lista[index] = this.#allapot;
+  }
+  getErtek() {
+    return this.#allapot;
+  }
+  vizSzintes() {
+    let vTExt = "";
+    for (let index = 0; index < this.lista.length; index++) {
+      vTExt += this.lista[index];
+      if (index % 3 == 2) {
+        vTExt += "@";
+      }
     }
-    getErtek(){
-        return this.#allapot;
+    return vTExt;
+  }
+  fuggoleges() {
+    let txt = "";
+    for (let i = 0; i < 3; i++) {
+      txt += this.lista[i] + this.lista[i + 3] + this.lista[i + 6];
+      txt += "@";
     }
-    vegeVanE(){
-        let eredemeny = this.#vizszintesEll()
-        if (eredemeny.indexOf("XXX")>-1) {
-            return "X nyert"
-        }else if (eredemeny.indexOf("OOO")>-1) {
-            return "O nyert"
-        }
-        if (this.#lepes >=9) {
-            return "döntetlen";
-        }
-            return "nincs vége";
-        
+    return txt;
+  }
+  atlo() {
+    let txt = "";
+    txt += this.lista[0] + this.lista[4] + this.lista[8];
+    txt += "@";
+    txt += this.lista[2] + this.lista[4] + this.lista[6];
+    return txt;
+  }
+  ellenorzes() {
+    let nyert = "";
+    let osszegzesTXT = 
+      this.vizSzintes() + "@" + this.fuggoleges() + "@" + this.atlo() + "@";
+    console.log(osszegzesTXT);
+    if (osszegzesTXT.includes("OOO")) {
+      nyert = "O";
+    } else if (osszegzesTXT.includes("XXX")) {
+      nyert = "X";
+    } else if (
+      !osszegzesTXT.includes("XXX") &&
+      !osszegzesTXT.includes("OOO") &&
+      !osszegzesTXT.includes(" ")
+    ) {
+      nyert = "Döntetlen";
     }
-    #vizszintesEll(){
-        let vTExt ="";
-        for (let index = 0; index < this.#lista.length; index++) {
-            vTExt+=this.#lista[index]
-            if (index%3==2) {
-                vTExt+="@";
-            }
-            
-        }
-        console.log(vTExt);
-        return vTExt;
-    }
+    return nyert;
+  }
 }
-export default Model
+export default Model;

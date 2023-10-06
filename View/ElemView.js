@@ -2,7 +2,8 @@
 class ElemView {
     #Szuloelem;
     #index;
-    #allapot
+    #allapot;
+    #nyertes = "";
   constructor(Szuloelem,index) {
     this.#Szuloelem = Szuloelem;
     this.#index = index;
@@ -15,6 +16,7 @@ class ElemView {
         this.#esemenyTrigger("kivalaszt")
         this.#allapot = false;
       }
+
       
 
     })
@@ -34,7 +36,9 @@ getIndex(){
 setErtek(ertek){
   this.peElem.html(ertek)
 }
-
+setNyertes(ertekek){
+  this.#nyertes += ertekek;
+}
 #esemenyTrigger(esemenynev){
   const esemenyem = new CustomEvent(esemenynev, {detail: this});
   window.dispatchEvent(esemenyem);
