@@ -52,7 +52,6 @@ class Model {
     let nyert = "";
     let osszegzesTXT = 
       this.vizSzintes() + "@" + this.fuggoleges() + "@" + this.atlo() + "@";
-    console.log(osszegzesTXT);
     if (osszegzesTXT.includes("OOO")) {
       nyert = "O";
     } else if (osszegzesTXT.includes("XXX")) {
