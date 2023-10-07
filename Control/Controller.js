@@ -11,6 +11,7 @@ class Controller{
         const Kijon = $(".Kijon");
         const ELEMVIEW =new jatekView(SZULO,this.#kesz);
         const MODEL = new Model();
+        new Kialapot(Kijon);
         $(window).on("kivalaszt",(event)=>{
             MODEL.setAllapot(event.detail.getIndex());
             event.detail.setErtek(MODEL.getErtek());

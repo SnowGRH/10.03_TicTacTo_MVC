@@ -7,12 +7,12 @@ class Kialapot{
     this.Kiir();
     }
     Kiir(){
-        let text = `<p> Következő:`;
+        let text = `<p>Következő:`;
         let alap = ``;
-        if (this.#ertek == "O") {
-            alap = `X`;
-        }else{
+        if (this.#ertek == "X") {
             alap = `O`;
+        }else{
+            alap = `X`;
         }
         text += alap+`</p>`;
         this.#SzuloELEM.html(text);
